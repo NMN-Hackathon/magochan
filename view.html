@@ -23,18 +23,31 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-        <video id="streamVideo" width="320", height="240" autoplay data-next-src="./video/main.mp4"></video>
+        <video id="streamVideo" class="streamVideo" autoplay data-next-src="./video/main.mp4"></video>
 
         <div id="my_video_area">
-        	<video id="myVideo" width="280", height="200" autoplay></video>
+        	<video id="video0" class="viewVideo" autoplay></video>
+        	<video id="video1" class="viewVideo" autoplay></video>
+        	<video id="video2" class="viewVideo" autoplay></video>
+        	<video id="video3" class="viewVideo" autoplay></video>
+        	<video id="video4" class="viewVideo" autoplay></video>
+        	<!--
+        	<video id="video0" class="viewVideo" width="280", height="200" autoplay></video>
+        	<video id="video1" class="viewVideo" width="280", height="200" autoplay></video>
+        	<video id="video2" class="viewVideo" width="280", height="200" autoplay></video>
+        	<video id="video3" class="viewVideo" width="280", height="200" autoplay></video>
+        	<video id="video4" class="viewVideo" width="280", height="200" autoplay></video>
+        -->
       	</div>
 
         <div id="video_area">
         </div>
         <!-- Add your site or application content here -->
+        <!--
         <p>受信</p>
         <p>受信ID: <span id="peer_id"></span></p>
         <button id="testButton">Test</button>
+      -->
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
         <script src="https://skyway.io/dist/0.3/peer.js"></script>
