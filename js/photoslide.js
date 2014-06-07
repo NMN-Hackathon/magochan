@@ -87,11 +87,6 @@ $.extend(PhotoSlide.prototype, {
 
         $(this.$photos[this.current_index]).addClass("ps-photo-show");
         this.startSlideShow();
-
-        // FIXME: デモ用に画面遷移
-        setTimeout(function() {
-            location.href = "view.html";
-        }, 2000);
     },
 
     _adjustVideoPosition: function($video) {
