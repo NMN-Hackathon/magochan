@@ -5,7 +5,7 @@ function printlog(str) {
 }
 
 var _Config = {
-    kTransitionTimeMs: 10000
+    kTransitionTimeMs: 5000
 };
 
 var PhotoSlide = function(container_selector, photo_urls, notification_url) {
