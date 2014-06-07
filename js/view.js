@@ -5,6 +5,7 @@ $(function() {
 	var myPeerId = null;
 	var myPeer = null;
 	var SPACE_KEY = 32;
+	var ESC_KEY = 27;
 	
 	// ビデオ、オーディオの準備
 	setupMediaStream(function(stream, streamUrl) {
@@ -116,7 +117,7 @@ $(function() {
 	// キーダウン時に、動画に切り替える
 	$(document).keyup(function(e) {
 		console.log(e.keyCode);
-		if (e.keyCode == SPACE_KEY) {
+		if (e.keyCode == ESC_KEY) {
 			triggerVideo();
 		}
 	});
@@ -128,6 +129,7 @@ $(function() {
 		var beforeSrc = $video.attr("src");
 		$video.attr('src', nextSrc);
 		$video.attr("data-next-src", beforeSrc);
+		$video.toggleClass('movie');
 	}
 
 });

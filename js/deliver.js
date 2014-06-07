@@ -42,50 +42,5 @@ $(function() {
 			}
 		);
 	};
-
-
-
-// 	var peer = new Peer({key: 'fa40f58a-ed4e-11e3-8985-1b56ab08265e'});
-// 	var gConn = null;
-// 	// peer.on('open', function(peerId) {
-// 	// 	$("#peer_id").text(peerId);
-// 	// });
-// 	// peer.on('error', function(err) {
-// 	// 	console.log(err);
-// 	// });
-
-// 	// 接続受信時
-// 	peer.on('connection', function(conn) {
-// 		connected(conn);
-// 	});
-
-// 	// 接続に行くイベント
-// 	// $("#connect_button").on('click', function() {
-// 	// 	var connect_peer_id = $("#connect_id").val();
-// 	// 	connectPeer(connect_peer_id);
-// 	// });
-
-// 	// 接続に行く処理
-// 	function connectPeer(peerId) {
-// 		var conn = peer.connect(peerId);
-// 		connected(conn);
-// 	}
-
-// 	// 接続完了した際の処理
-// 	function connected(conn) {
-// 		gConn = conn;
-// 		conn.on('open', function() {
-// 			// メッセージを受信
-// 			conn.on('data', function(data) {
-// 				console.log('Received', data);
-// 			});
-// 		});
-// 	}
-
-// 	$("#send_button").on('click', function() {
-// 		if (!gConn) return;
-// 		gConn.send('Hello!!');
-// 	});
 	
-// });
 });
