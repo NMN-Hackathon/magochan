@@ -4,12 +4,13 @@ $(function() {
 	var mediaStream = null;
 	var myPeerId = null;
 	var myPeer = null;
-
+	var SPACE_KEY = 32;
+	
 	// ビデオ、オーディオの準備
 	setupMediaStream(function(stream, streamUrl) {
 		var url = URL.createObjectURL(stream);
 		mediaStream = stream;
-		$("#myVideo").attr('src', url);
+		$("#video0").attr('src', url);
 		initializedMediaStream(stream);
 		setInterval(updateViewers, 5000);
 	});
@@ -17,10 +18,12 @@ $(function() {
 	// 閲覧者の表示を更新する
 	function updateViewers() {
 		getViewers(function(viewerIds) {
+			viewerIds.sort();
 			// vieweridの数だけ生成する
 			for(var i = 0; i < viewerIds.length; i++) {
 				viewerId = viewerIds[i];
-				if (viewerId != MagochanPeerId && viewerId != myPeerId) {
+				// if (viewerId != MagochanPeerId && viewerId != myPeerId) {
+				if (viewerId != MagochanPeerId) {
 					//　閲覧者が既にあったらなにもしない
 					if (0 < $("video[data-viewer-id=" + viewerId + "]").length) {
 						continue;
@@ -32,10 +35,19 @@ $(function() {
 						// 閲覧者受信
 						call.on('stream', function(stream) {
 							var url = URL.createObjectURL(stream);
-							var $viewerVideo = $("<video width='160' height='120' autoplay></video>");
-							$viewerVideo.attr('src', url);
-							$viewerVideo.attr('data-viewer-id', viewerId);
-							$("#video_area").append($viewerVideo);
+							$emptyVideos = $("video.viewVideo").filter(function() {
+								return !$(this).attr('src');
+							});
+							// srcが空のやつを探す
+							if (0 < $emptyVideos.length) {
+								$viewerVideo = $($emptyVideos.get(0));
+								$viewerVideo.attr('src', url);
+								$viewerVideo.attr('data-viewer-id', viewerId);
+							}
+						});
+						call.on('close', function() {
+							$viewerVideo = $("video.viewVideo[data-viewer-id=" + viewerId + "]");
+							$viewerVideo.attr('src', '');
 						});
 					})(viewerId);
 				}
@@ -43,6 +55,7 @@ $(function() {
 		});
 	};
 
+	// mediastreamを初期化
 	function initializedMediaStream(stream) {
 		var peer = new Peer({ key: apiKey });
 		peer.on('open', function(peerId) {
@@ -62,6 +75,10 @@ $(function() {
 		peer.on('error', function(error) {
 			console.log('Peerの作成に失敗');
 			console.log(error);
+		});
+		peer.on('close', function() {
+			console.log('peer close');
+			peer.destroy();
 		});
 		// 受信者の接続が来たら、mediaStreamの応答を返す
 		peer.on('call', function(call) {
@@ -93,6 +110,24 @@ $(function() {
 			if (success) {
 				success(data);
 			}
-		})
+		});
 	}
+
+	// キーダウン時に、動画に切り替える
+	$(document).keyup(function(e) {
+		console.log(e.keyCode);
+		if (e.keyCode == SPACE_KEY) {
+			triggerVideo();
+		}
+	});
+
+	// triggerVideo（ビデオと生放送を入れ替える）
+	function triggerVideo() {
+		$video = $("#streamVideo");
+		var nextSrc = $video.attr("data-next-src");
+		var beforeSrc = $video.attr("src");
+		$video.attr('src', nextSrc);
+		$video.attr("data-next-src", beforeSrc);
+	}
+
 });

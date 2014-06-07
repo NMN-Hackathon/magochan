@@ -1,0 +1,56 @@
+
+
+body {
+	width: 1280px;
+	height: 800px;
+	overflow: hidden;
+	background: url("../img/background-view.png");
+}
+
+video.viewVideo, video.streamVideo {
+	/*background-color: black;*/
+	position: absolute;
+	border-radius: 9px;
+}
+
+#streamVideo {
+	left: 68px;
+	top: 181px;
+	width: 630px;
+	height: 472px;
+}
+
+#video0 {
+	left: 771px;
+	top: 68px;
+	width: 149px;
+	height: 116px;
+}
+
+#video1 {
+	left: 992px;
+	top: 56px;
+	width: 228px;
+	height: 196px;
+}
+
+#video2 {
+	left: 1099px;
+	top: 358px;
+	width: 150px;
+	height: 116px;
+}
+
+#video3 {
+	left: 990px;
+	top: 563px;
+	width: 253px;
+	height: 198px;
+}
+
+#video4 {
+	left: 756px;
+	top: 557px;
+	width: 187px;
+	height: 146px;
+}
