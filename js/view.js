@@ -11,18 +11,8 @@ $(function() {
 		mediaStream = stream;
 		$("#myVideo").attr('src', url);
 		initializedMediaStream(stream);
+		setInterval(updateViewers, 5000);
 	});
-
-
-	// 閲覧者videoが停止したら削除する
-	$(document).on('ended', function() {
-		console.log('error');
-	}, 'video');
-	// $("#testButton").on('click', function() {
-	// 	updateViewers();
-	// }
-
-	setInterval(updateViewers, 5000);
 
 	// 閲覧者の表示を更新する
 	function updateViewers() {
@@ -30,7 +20,6 @@ $(function() {
 			// vieweridの数だけ生成する
 			for(var i = 0; i < viewerIds.length; i++) {
 				viewerId = viewerIds[i];
-				console.log(viewerId);
 				if (viewerId != MagochanPeerId && viewerId != myPeerId) {
 					//　閲覧者が既にあったらなにもしない
 					if (0 < $("video[data-viewer-id=" + viewerId + "]").length) {
@@ -65,13 +54,14 @@ $(function() {
 
 			// まごちゃんチャンネル受信
 			call.on('stream', function(stream) {
+				console.log('チャンネル受信！');
 				var url = URL.createObjectURL(stream);
 				$("#streamVideo").attr('src', url);
 			});
 		});
-		peer.on('error', function(peerId) {
+		peer.on('error', function(error) {
 			console.log('Peerの作成に失敗');
-			error();
+			console.log(error);
 		});
 		// 受信者の接続が来たら、mediaStreamの応答を返す
 		peer.on('call', function(call) {

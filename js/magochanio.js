@@ -1,6 +1,6 @@
 
 var MagochanIOApiKey = '0ff773c4-ec9e-11e3-a625-5bd0486b3528';
-var MagochanPeerId = 'Magochan3';
+var MagochanPeerId = 'Magochan4';
 
 var MagochanIO = {
 	/**
