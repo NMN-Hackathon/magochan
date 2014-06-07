@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html style="width: 100%; height: 100%;">
+<head>
+    <link rel="stylesheet" href="./css/photoslide.css"/>
+    <script src="./js/vendor/jquery-1.10.2.min.js"></script>
+    <script src="./js/photoslide.js"></script>
+    <script>
+        $(function() {
+            var photoslide = new PhotoSlide("body", [
+                "./img/photoslide/0.png",
+                "./img/photoslide/1.png",
+                "./img/photoslide/2.png"
+            ], "./video/announce.mp4");
+
+            // DEBUG
+            $(window).keydown(function(e) {
+                if (e.keyCode === 13) { // enter
+                    photoslide.startNotification();
+                }
+            });
+        });
+    </script>
+    <title>PhotoSlide</title>
+</head>
+<body style="width: 100%; height: 100%; margin: 0;">
+PhotoSlide
+</body>
+</html>
