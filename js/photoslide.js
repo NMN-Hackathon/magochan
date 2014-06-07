@@ -111,3 +111,20 @@ $.extend(PhotoSlide.prototype, {
 window.PhotoSlide = PhotoSlide;
 
 })(window, document, jQuery);
+
+$(function() {
+    var photo_urls = [];
+    for (var i = 1; i <= 11; i++) {
+        photo_urls.push("./img/clock-photo/" + i + ".jpg");
+    }
+    var notification_url = "./video/announce.mp4";
+
+    var photoslide = new PhotoSlide("#photo-slide-container", photo_urls, notification_url);
+
+    // DEBUG
+    $(window).keydown(function(e) {
+        if (e.keyCode === 13) { // enter
+            photoslide.startNotification();
+        }
+    });
+});
