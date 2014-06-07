@@ -13,7 +13,8 @@
   width: 100%;
 }
 
-/*  Mode Setting
+/* ================================================
+    Mode Setting
    ================================================ */
 
 .photo-slide-mode #photo-slide-container {
@@ -49,7 +50,16 @@
   top: 400px;
 }
 
-/*  Element default
+/*  clock in broadcast page
+   ================================================ */
+
+#digital-clock.broadcast-page-clock {
+  position: absolute;
+
+}
+
+/* ================================================
+    Element default
    ================================================ */
 
 #digital-clock {

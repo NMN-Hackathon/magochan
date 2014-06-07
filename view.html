@@ -15,6 +15,7 @@
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/view.css">
+        <link rel="stylesheet" href="css/clock.css">
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
     <body>
@@ -22,6 +23,19 @@
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
+
+        <div id="digital-clock" class="broadcast-page-clock">
+            <div id="digital-clock-date">
+                <!-- FIXME: 決め打ちです!!! -->
+                <span>2014.6.7</span>
+            </div>
+            <div id="digital-clock-time">
+                <img id="digitalhour1" src="./img/0.gif">
+                <img id="digitalhour2" src="./img/0.gif">
+                <img id="digitalminute1" src="./img/0.gif">
+                <img id="digitalminute2" src="./img/0.gif">
+            </div>
+        </div>
 
         <video id="streamVideo" class="streamVideo" autoplay data-next-src="./video/main.mp4"></video>
 
