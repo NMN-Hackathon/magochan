@@ -1,3 +1,17 @@
+.fit-window {
+    height: 100%;
+    margin: 0;
+    width: 100%;
+}
+
+#photo-slide-container {
+    height: 100%;
+    width: 100%;
+}
+
+/*  PhotoSlide Module
+   ========================================================= */
+
 .ps-container {
     position: relative;
 }
