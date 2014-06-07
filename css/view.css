@@ -8,7 +8,7 @@ body {
 }
 
 video.viewVideo, video.streamVideo {
-	background-color: black;
+	/*background-color: black;*/
 	position: absolute;
 	border-radius: 9px;
 }
