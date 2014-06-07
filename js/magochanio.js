@@ -1,5 +1,6 @@
 
-var MagochanIOApiKey = '0ff773c4-ec9e-11e3-a625-5bd0486b3528';
+// var MagochanIOApiKey = '0ff773c4-ec9e-11e3-a625-5bd0486b3528';
+var MagochanIOApiKey = 'fa40f58a-ed4e-11e3-8985-1b56ab08265e';
 var MagochanPeerId = 'Magochan2';
 
 var MagochanIO = {
