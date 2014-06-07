@@ -14,9 +14,26 @@ video.viewVideo, video.streamVideo {
 }
 
 #streamVideo {
+	/*left: 68px;*/
+	/*top: 181px;*/
+	width: 630px;
+	height: 473px;
+}
+
+#streamVideoArea {
+	overflow: hidden;
+	width: 630px;
+	height: 472px;
 	left: 68px;
 	top: 181px;
-	width: 630px;
+	position: absolute;
+	border-radius: 9px;
+}
+
+.movie#streamVideo {
+	left: -20px;
+	/*top: 181px;*/
+	width: 845px;
 	height: 472px;
 }
 

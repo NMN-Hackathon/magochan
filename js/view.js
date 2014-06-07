@@ -1,10 +1,11 @@
 $(function() {
-	var apiKey = '0ff773c4-ec9e-11e3-a625-5bd0486b3528';
+	var apiKey = MagochanIOApiKey;
 	var viewerUrl = 'https://skyway.io/active/list/' + apiKey;
 	var mediaStream = null;
 	var myPeerId = null;
 	var myPeer = null;
 	var SPACE_KEY = 32;
+	var ESC_KEY = 27;
 	
 	// ビデオ、オーディオの準備
 	setupMediaStream(function(stream, streamUrl) {
@@ -116,7 +117,7 @@ $(function() {
 	// キーダウン時に、動画に切り替える
 	$(document).keyup(function(e) {
 		console.log(e.keyCode);
-		if (e.keyCode == SPACE_KEY) {
+		if (e.keyCode == ESC_KEY) {
 			triggerVideo();
 		}
 	});
@@ -128,6 +129,7 @@ $(function() {
 		var beforeSrc = $video.attr("src");
 		$video.attr('src', nextSrc);
 		$video.attr("data-next-src", beforeSrc);
+		$video.toggleClass('movie');
 	}
 
 });
