@@ -15,26 +15,37 @@
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
     <body>
-        <div id="root-container">
+        <div id="root-container" class="no-photo-mode">
             <div id="analog-clock">
-                <img id="analogsecond" src="http://static.joncom.be/screen/images/code/css-clocks/analogseconds.png">
-                <img id="analogminute" src="http://static.joncom.be/screen/images/code/css-clocks/analogminutes.png">
-                <img id="analoghour" src="http://static.joncom.be/screen/images/code/css-clocks/analoghours.png">
+                <img id="analogminute" src="./img/analogminutes.png">
+                <img id="analoghour" src="./img/analoghours.png">
             </div>
 
             <div id="photo-slide-container"></div>
 
             <div id="digital-clock">
-                <img id="digitalhour1" src="./img/0.gif">
-                <img id="digitalhour2" src="./img/0.gif">
-                <img id="digitalminute1" src="./img/0.gif">
-                <img id="digitalminute2" src="./img/0.gif">
-                <img id="digitalsecond1" src="./img/0.gif">
-                <img id="digitalsecond2" src="./img/0.gif">
+                <div id="digital-clock-date">
+                    <!-- FIXME: 決め打ちです!!! -->
+                    <span>2014.6.7</span>
+                </div>
+                <div id="digital-clock-time">
+                    <img id="digitalhour1" src="./img/0.gif">
+                    <img id="digitalhour2" src="./img/0.gif">
+                    <img id="digitalminute1" src="./img/0.gif">
+                    <img id="digitalminute2" src="./img/0.gif">
+                </div>
+                <div id="analog-clock-info">
+                    <p>長 針：山 田 か ん た ろ う　く ん（９）</p>
+                    <p>短 針：山 田 こ う の す け　く ん（７）</p>
+                </div>
+            </div>
+
+            <div id="logo-container">
+                <img src="./img/logo.png">
             </div>
         </div>
 
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
         <script src="js/plugins.js"></script>
         <script src="js/clock.js"></script>

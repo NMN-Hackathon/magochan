@@ -1,19 +1,75 @@
-#analog-clock {
+#root-container {
+  background: rgb(255, 235, 79) url("../img/background-clock.png");
+  height: 800px;
+  width: 1280px;
+}
+
+#root-container.photo-slide-mode {
+  background-image: none;
+}
+
+#photo-slide-container {
+  height: 100%;
+  width: 100%;
+}
+
+/*  Mode Setting
+   ================================================ */
+
+.photo-slide-mode #photo-slide-container {
+  display: block;
+}
+
+.photo-slide-mode #analog-clock,
+.photo-slide-mode #analog-clock-info {
+  display: none;
+}
+
+.photo-slide-mode #digital-clock {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  left: 70px;
+  bottom: 50px;
+}
+
+.no-photo-mode #photo-slide-container {
+  display: none;
+}
+
+.no-photo-mode #analog-clock {
+  height: 701px;
+  position: absolute;
+  top: 50px;
+  right: 85px;
+  width: 701px;
+}
+
+.no-photo-mode #digital-clock {
+  position: absolute;
+  left: 70px;
+  top: 400px;
+}
+
+/*  Element default
+   ================================================ */
+
+#digital-clock {
+  text-align: center;
+  width: 378px; /* ロゴに合わせる */
 }
 
 #analog-clock img {
   position: absolute;
 }
 
-#digital-clock {
+#analog-clock-info > p {
+  color: rgb(105, 51, 11);
+  margin: 3px 0;
+}
+
+#logo-container {
+  height: 142px;
   position: absolute;
   top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  left: 70px;
+  width: 378px;
 }

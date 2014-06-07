@@ -1,20 +1,3 @@
-.fit-window {
-    height: 100%;
-    margin: 0;
-    width: 100%;
-}
-
-#root-container {
-    background: black;
-    height: 800px;
-    width: 1280px;
-}
-
-#photo-slide-container {
-    height: 100%;
-    width: 100%;
-}
-
 /*  PhotoSlide Module
    ========================================================= */
 

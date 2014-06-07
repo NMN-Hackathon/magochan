@@ -5,7 +5,7 @@ function printlog(str) {
 }
 
 var _Config = {
-    kTransitionTimeMs: 60000
+    kTransitionTimeMs: 10000
 };
 
 var PhotoSlide = function(container_selector, photo_urls, notification_url) {
@@ -126,11 +126,28 @@ $(function() {
         switch (e.keyCode) {
             case 13: // enter
                 photoslide.startNotification();
+
+                var $container = $("#root-container");
+                $container.addClass("photo-slide-mode");
+                $container.removeClass("no-photo-mode");
                 break;
             case 27: // ESC
-                $("#photo-slide-container").toggle();
+                toggleMode();
                 break;
             default:
         }
     });
 });
+
+function toggleMode() {
+    var $container = $("#root-container");
+    var is_photo_slide_mode = $container.hasClass("photo-slide-mode");
+
+    if (is_photo_slide_mode) {
+        $container.removeClass("photo-slide-mode");
+        $container.addClass("no-photo-mode");
+    } else {
+        $container.addClass("photo-slide-mode");
+        $container.removeClass("no-photo-mode");
+    }
+}
