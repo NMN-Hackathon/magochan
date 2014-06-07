@@ -6,6 +6,8 @@
 
 #root-container {
     background: black;
+    height: 800px;
+    width: 1280px;
 }
 
 #photo-slide-container {
