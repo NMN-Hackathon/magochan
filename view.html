@@ -14,14 +14,16 @@
 
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/view.css">
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
     <body>
+    	<div id="main">
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-        <video id="streamVideo" width="320", height="240" autoplay></video>
+        <video id="streamVideo" width="320", height="240" autoplay data-next-src="./video/main.mp4"></video>
 
         <div id="my_video_area">
         	<video id="myVideo" width="280", height="200" autoplay></video>
@@ -50,5 +52,6 @@
             r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
             ga('create','UA-XXXXX-X');ga('send','pageview');
         </script>
+       </div>
     </body>
 </html>

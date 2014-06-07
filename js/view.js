@@ -4,6 +4,7 @@ $(function() {
 	var mediaStream = null;
 	var myPeerId = null;
 	var myPeer = null;
+	var SPACE_KEY = 32;
 
 	// ビデオ、オーディオの準備
 	setupMediaStream(function(stream, streamUrl) {
@@ -43,6 +44,7 @@ $(function() {
 		});
 	};
 
+	// mediastreamを初期化
 	function initializedMediaStream(stream) {
 		var peer = new Peer({ key: apiKey });
 		peer.on('open', function(peerId) {
@@ -93,6 +95,24 @@ $(function() {
 			if (success) {
 				success(data);
 			}
-		})
+		});
 	}
+
+	// キーダウン時に、動画に切り替える
+	$(document).keyup(function(e) {
+		console.log(e.keyCode);
+		if (e.keyCode == SPACE_KEY) {
+			triggerVideo();
+		}
+	});
+
+	// triggerVideo（ビデオと生放送を入れ替える）
+	function triggerVideo() {
+		$video = $("#streamVideo");
+		var nextSrc = $video.attr("data-next-src");
+		var beforeSrc = $video.attr("src");
+		$video.attr('src', nextSrc);
+		$video.attr("data-next-src", beforeSrc);
+	}
+
 });
