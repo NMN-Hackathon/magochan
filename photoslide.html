@@ -10,11 +10,14 @@
                 "./img/photoslide/0.png",
                 "./img/photoslide/1.png",
                 "./img/photoslide/2.png"
-            ], "./video/notification.m4v");
+            ], "./video/announce.mp4");
 
-            setTimeout(function() {
-                photoslide.startNotification();
-            }, 10000);
+            // DEBUG
+            $(window).keydown(function(e) {
+                if (e.keyCode === 13) { // enter
+                    photoslide.startNotification();
+                }
+            });
         });
     </script>
     <title>PhotoSlide</title>
