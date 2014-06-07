@@ -3,12 +3,12 @@
 body {
 	width: 1280px;
 	height: 800px;
-	overflow: hidden;
+	/*overflow: hidden;*/
 	background: url("../img/background-view.png");
 }
 
 video.viewVideo, video.streamVideo {
-	/*background-color: black;*/
+	background-color: black;
 	position: absolute;
 	border-radius: 9px;
 }
@@ -21,26 +21,26 @@ video.viewVideo, video.streamVideo {
 }
 
 #video0 {
-	left: 771px;
+	left: 767px;
 	top: 68px;
-	width: 149px;
+	width: 155px;
 	height: 116px;
 }
 
 #video1 {
-	left: 992px;
+	left: 973px;
 	top: 56px;
-	width: 228px;
-	height: 196px;
+	width: 264px;
+	height: 198px;
 }
 
 #video2 {
-	left: 1099px;
-	top: 358px;
-	width: 150px;
-	height: 116px;
+	left: 983px;
+	top: 563px;
+	width: 265px;
+	height: 197px;
 }
-
+/*
 #video3 {
 	left: 990px;
 	top: 563px;
@@ -54,3 +54,4 @@ video.viewVideo, video.streamVideo {
 	width: 187px;
 	height: 146px;
 }
+*/
