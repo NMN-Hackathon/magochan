@@ -123,8 +123,14 @@ $(function() {
 
     // DEBUG
     $(window).keydown(function(e) {
-        if (e.keyCode === 13) { // enter
-            photoslide.startNotification();
+        switch (e.keyCode) {
+            case 13: // enter
+                photoslide.startNotification();
+                break;
+            case 27: // ESC
+                $("#photo-slide-container").toggle();
+                break;
+            default:
         }
     });
 });
