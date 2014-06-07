@@ -55,7 +55,8 @@
 
 #digital-clock.broadcast-page-clock {
   position: absolute;
-
+  left: 410px;
+  top: 20px;
 }
 
 /* ================================================
