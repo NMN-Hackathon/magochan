@@ -99,8 +99,8 @@ var oClockDigital = {
         this.fRotate("digitalsecond", this.iCurrSecond);
     },
     fRotate:        function(sID, value) {
-        $("#" + sID + "1").attr("src", "./img/" + Math.floor(value / 10) + ".gif");
-        $("#" + sID + "2").attr("src", "./img/" + value % 10 + ".gif");
+        $("#" + sID + "1").attr("src", "./img/clock-num/" + Math.floor(value / 10) + "_" + this._hashColorPattern(Math.floor(value / 10)) + ".png");
+        $("#" + sID + "2").attr("src", "./img/clock-num/" + value % 10 + "_" + this._hashColorPattern(value % 10) + ".png");
     },
     fStepSize:     function(iTo, iFrom) {
         var iAnimDiff = (iTo - iFrom);
@@ -119,6 +119,14 @@ var oClockDigital = {
         this.fRotate("digitalhour", this.iCurrHour);
         this.fRotate("digitalminute", this.iCurrMinute);
         this.fRotate("digitalsecond", this.iCurrSecond);
+    },
+    /**
+     * 追加分
+     */
+    _hashColorPattern: function(num) {
+        var kColorPattern = ["blue", "brown", "darkblue", "green", "red"];
+
+        return kColorPattern[num % kColorPattern.length];
     }
 };
 
