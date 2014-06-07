@@ -87,6 +87,11 @@ $.extend(PhotoSlide.prototype, {
 
         $(this.$photos[this.current_index]).addClass("ps-photo-show");
         this.startSlideShow();
+
+        // FIXME: デモ用に画面遷移
+        setTimeout(function() {
+            location.href = "view.html";
+        }, 2000);
     },
 
     _adjustVideoPosition: function($video) {
@@ -125,6 +130,7 @@ $(function() {
     $(window).keydown(function(e) {
         switch (e.keyCode) {
             case 13: // enter
+                // FIXME: デモ用に告知を始める
                 photoslide.startNotification();
 
                 var $container = $("#root-container");
@@ -132,8 +138,12 @@ $(function() {
                 $container.removeClass("no-photo-mode");
                 break;
             case 27: // ESC
+                // FIXME: デモ用にモード切り替え
                 toggleMode();
                 break;
+            case 16: // Shift
+                // FIXME: デモ用に画面遷移
+                location.href = "view.html";
             default:
         }
     });
