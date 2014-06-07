@@ -29,7 +29,7 @@ var PhotoSlide = function(container_selector, photo_urls, notification_url) {
     var $notification = this.$notification = $("<video></video>").addClass("ps-video");
     $notification.attr("src", notification_url);
     $notification.on("ended", this._onEndNotification.bind(this));
-    $notification.on("loadeddata", function() {
+    $notification.on("loadedmetadata", function() {
         this._adjustVideoPosition($notification);
     }.bind(this));
 
@@ -95,15 +95,17 @@ $.extend(PhotoSlide.prototype, {
     },
 
     _adjustVideoPosition: function($video) {
-        var w = $video.width();
-        var h = $video.height();
+        var w = $video[0].videoWidth;
+        var h = $video[0].videoHeight;
         var container_w = $video.parent().width();
         var container_h = $video.parent().height();
 
         var scale_w = w / container_w;
         var scale_h = h / container_h;
 
-        if (scale_w > scale_h) {
+        printlog(scale_w + ", " + scale_h);
+
+        if (scale_w < scale_h) {
             printlog("fit the size of video tag: horizontal");
             $video.addClass("ps-horizontal-fit");
         } else {

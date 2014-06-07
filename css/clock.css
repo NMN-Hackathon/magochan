@@ -1,6 +1,7 @@
 #root-container {
   background: rgb(255, 235, 79) url("../img/background-clock.png");
   height: 800px;
+  overflow: hidden;
   position: relative;
   width: 1280px;
 }
@@ -58,6 +59,17 @@
   position: absolute;
   left: 410px;
   top: 20px;
+}
+
+#digital-clock.broadcast-page-clock > #digital-clock-date {
+  height: 36px;
+  line-height: 36px;
+  margin-bottom: 16px;
+}
+
+#digital-clock.broadcast-page-clock > #digital-clock-time {
+  height: 68px;
+  line-height: 68px;
 }
 
 /* ================================================

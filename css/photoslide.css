@@ -6,7 +6,7 @@
 }
 
 .ps-photo {
-    background: center center / contain no-repeat;
+    background: center center / cover no-repeat;
     bottom: 0;
     display: block;
     left: 0;
