@@ -1,6 +1,7 @@
 #root-container {
   background: rgb(255, 235, 79) url("../img/background-clock.png");
   height: 800px;
+  position: relative;
   width: 1280px;
 }
 
