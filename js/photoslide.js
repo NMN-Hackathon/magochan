@@ -89,7 +89,9 @@ $.extend(PhotoSlide.prototype, {
         this.startSlideShow();
 
         // FIXME: デモ用に画面遷移
-        location.href = "view.html";
+        setTimeout(function() {
+            location.href = "view.html";
+        }, 2000);
     },
 
     _adjustVideoPosition: function($video) {
