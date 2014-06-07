@@ -4,6 +4,10 @@
     width: 100%;
 }
 
+#root-container {
+    background: black;
+}
+
 #photo-slide-container {
     height: 100%;
     width: 100%;
