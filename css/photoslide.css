@@ -1,0 +1,21 @@
+.ps-container {
+    position: relative;
+}
+
+.ps-photo {
+    background: center center / contain no-repeat;
+    bottom: 0;
+    display: block;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    transition: 1s linear;
+    -mox-transition: 1s linear;
+    -webkit-transition: 1s linear;
+    top: 0;
+}
+
+.ps-photo.ps-photo-show {
+    opacity: 1;
+}
