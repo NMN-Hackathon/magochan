@@ -8,8 +8,8 @@ var _Config = {
     kTransitionTimeMs: 60000
 };
 
-var PhotoSlide = function(container_selector, photo_urls) {
-    this.$container = $(container_selector).addClass("ps-container");
+var PhotoSlide = function(container_selector, photo_urls, notification_url) {
+    var $container = this.$container = $(container_selector).addClass("ps-container");
 
     // create img elements for photos
     var $photos = $();
@@ -23,10 +23,19 @@ var PhotoSlide = function(container_selector, photo_urls) {
 
     // initialize photo slide index
     this.current_index = 0;
-    $(this.$photos[0]).addClass("ps-photo-show");
+    $($photos[0]).addClass("ps-photo-show");
+
+    // create video element for notification
+    var $notification = this.$notification = $("<video></video>").addClass("ps-video");
+    $notification.attr("src", notification_url);
+    $notification.on("ended", this._onEndNotification.bind(this));
+    $notification.on("loadeddata", function() {
+        this._adjustVideoPosition($notification);
+    }.bind(this));
 
     // append img elements
-    this.$container.append(this.$photos);
+    $container.append($photos);
+    $container.append($notification);
 
     this.startSlideShow();
 };
@@ -54,6 +63,48 @@ $.extend(PhotoSlide.prototype, {
         $(this.$photos[this.current_index]).addClass("ps-photo-show");
 
         printlog("change for next photo: " + this.current_index);
+    },
+
+    startNotification: function() {
+        printlog("will start notification");
+
+        this.stopSlideShow();
+        this.$photos.removeClass("ps-photo-show");
+
+        var $n = this.$notification;
+        $n[0].currentTime = 0;
+        $n.addClass("ps-video-show");
+
+        $n[0].play();
+
+        printlog("did start notification");
+    },
+
+    _onEndNotification: function() {
+        printlog("did end notification");
+
+        this.$notification.removeClass("ps-video-show");
+
+        $(this.$photos[this.current_index]).addClass("ps-photo-show");
+        this.startSlideShow();
+    },
+
+    _adjustVideoPosition: function($video) {
+        var w = $video.width();
+        var h = $video.height();
+        var container_w = $video.parent().width();
+        var container_h = $video.parent().height();
+
+        var scale_w = w / container_w;
+        var scale_h = h / container_h;
+
+        if (scale_w > scale_h) {
+            printlog("fit the size of video tag: horizontal");
+            $video.addClass("ps-horizontal-fit");
+        } else {
+            printlog("fit the size of video tag: vertical");
+            $video.addClass("ps-vertical-fit");
+        }
     }
 });
 

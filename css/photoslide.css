@@ -19,3 +19,31 @@
 .ps-photo.ps-photo-show {
     opacity: 1;
 }
+
+.ps-video {
+    bottom: 0;
+    display: block;
+    left: 0;
+    margin: auto;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    transition: 1s linear;
+    -mox-transition: 1s linear;
+    -webkit-transition: 1s linear;
+    top: 0;
+}
+
+.ps-video.ps-horizontal-fit {
+    height: auto;
+    width: 100%;
+}
+
+.ps-video.ps-vertical-fit {
+    height: 100%;
+    width: auto;
+}
+
+.ps-video.ps-video-show {
+    opacity: 1;
+}
