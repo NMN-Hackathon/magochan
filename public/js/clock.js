@@ -84,6 +84,9 @@ var oClockDigital = {
     aMinute:        [],
     aSecond:        [],
     dtDate:         new Date(),
+    iCurrYear:      -1,
+    iCurrMonth:     -1,
+    iCurrDate:      -1,
     iCurrHour:      -1,
     iCurrMinute:    -1,
     iCurrSecond:    -1,
@@ -91,16 +94,13 @@ var oClockDigital = {
     iTimerUpdate:   setInterval("oClockDigital.fUpdate()", 1000),
 
     fInit:          function() {
-        this.iCurrHour = this.dtDate.getHours();
-        this.iCurrMinute = this.dtDate.getMinutes();
-        this.iCurrSecond = this.dtDate.getSeconds();
-        this.fRotate("digitalhour", this.iCurrHour);
-        this.fRotate("digitalminute", this.iCurrMinute);
-        this.fRotate("digitalsecond", this.iCurrSecond);
+        this.fUpdate();
     },
-    fRotate:        function(sID, value) {
-        $("#" + sID + "1").attr("src", "./img/clock-num/" + Math.floor(value / 10) + "_" + this._hashColorPattern(Math.floor(value / 10)) + ".png");
-        $("#" + sID + "2").attr("src", "./img/clock-num/" + value % 10 + "_" + this._hashColorPattern(value % 10) + ".png");
+    fRotate:        function(sID, value, fillDigitNum) {
+        var imagePaths = this._translateNumToImagePaths(value, fillDigitNum);
+        for (var i = 0, len = imagePaths.length; i < len; i++) {
+            $("#" + sID + (i + 1)).attr("src", imagePaths[i]);
+        }
     },
     fStepSize:     function(iTo, iFrom) {
         var iAnimDiff = (iTo - iFrom);
@@ -113,12 +113,18 @@ var oClockDigital = {
         // update time
         this.dtDate = new Date();
 
+        this.iCurrYear = this.dtDate.getFullYear();
+        this.iCurrMonth = this.dtDate.getMonth() + 1;
+        this.iCurrDate = this.dtDate.getDate();
         this.iCurrHour = this.dtDate.getHours();
         this.iCurrMinute = this.dtDate.getMinutes();
         this.iCurrSecond = this.dtDate.getSeconds();
-        this.fRotate("digitalhour", this.iCurrHour);
-        this.fRotate("digitalminute", this.iCurrMinute);
-        this.fRotate("digitalsecond", this.iCurrSecond);
+        this.fRotate("digitalyear", this.iCurrYear, 4);
+        this.fRotate("digitalmonth", this.iCurrMonth, 2);
+        this.fRotate("digitaldate", this.iCurrDate, 2);
+        this.fRotate("digitalhour", this.iCurrHour, 2);
+        this.fRotate("digitalminute", this.iCurrMinute, 2);
+        this.fRotate("digitalsecond", this.iCurrSecond, 2);
     },
     /**
      * 追加分
@@ -127,6 +133,23 @@ var oClockDigital = {
         var kColorPattern = ["blue", "brown", "darkblue", "green", "red"];
 
         return kColorPattern[num % kColorPattern.length];
+    },
+    /**
+     * REQUIRE: Positive Integer
+     * ENSURE: Array of Image Path
+     */
+    _translateNumToImagePaths: function(num, fillDigitNum) {
+        fillDigitNum = fillDigitNum || 0;
+        var imagePathPrefix = "./img/clock-num/";
+        var imagePathSuffix = ".png";
+        var paths = [];
+        do {
+            var digit = num % 10;
+            num = Math.floor(num / 10);
+            paths.unshift(imagePathPrefix + digit + "_" + this._hashColorPattern(digit) + imagePathSuffix);
+            fillDigitNum--;
+        } while (num !== 0 || fillDigitNum > 0);
+        return paths;
     }
 };
 
